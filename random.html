@@ -52,6 +52,7 @@
 
     
     <script>
+        function randomUser(){
 
         fetch('https://randomuser.me/api/')
         .then(res => res.json())
@@ -82,8 +83,12 @@
             document.getElementById(targetId).appendChild(img);
         }
         create_img_element('user_img');
-
         })
+        }
+        randomUser();
+         setInterval(() => {
+           randomUser();
+       }, 10000);
     </script>
 </body>
 </html>
