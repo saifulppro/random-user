@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User Detail</title>
+    <style>
+        .random_user {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .user_zone {
+            background-color: #ffffff;
+            box-shadow: 0px 0px 17px 1px #ddd;
+        }
+        div#user_name,  div#user_location, div#user_email, div#user_age, div#user_username {
+            font-size: 24px;
+            font-weight: 700;
+            background-color: #d4d4d461;
+            padding: 15px;
+            margin: 8px 0;
+        }
+        h1.text-center {
+            text-align: center;
+            background: aliceblue;
+            padding: 30px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        div#user_img img {
+            border-radius: 4px;
+            height: 200px;
+            width: 200px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center">Random User Api</h1>
+    <div class="random_user">
+        <div class="user_zone">
+            <div id="user_img"></div>
+            <div id="user_name">Jhon Doe</div>
+            <div id="user_location">United States</div>
+            <div id="user_email">jon@mail.com</div>
+            <div id="user_age">49</div>
+            <div id="user_username">redwolf844</div>
+        </div>
+    </div>
+
+    
+    <script>
+
+        fetch('https://randomuser.me/api/')
+        .then(res => res.json())
+        .then(data => {
+            const user = data.results[0];
+            const name = user.name;
+            const fullName = `Name: ${name.title} ${name.first} ${name.last}`
+            const location = `Location: ${user.location.country}`
+            const city = `City: ${user.location.city} `
+            const age = `Age: ${user.dob.age} Years `
+            const userName = `UserName: ${user.login.username}`
+            const email = `Email: ${user.email}`;
+            const picture = user.picture.large;
+
+            document.getElementById('user_name').innerText = fullName;
+            document.getElementById('user_location').innerText = location;
+            document.getElementById('user_email').innerText = email;
+            document.getElementById('user_age').innerText = age;
+            document.getElementById('user_username').innerText = userName;
+            // document.getElementById('user_img').src = picture;
+
+            const create_img_element = function(targetId){
+            //create the img element
+            const img = document.createElement('img');
+            //set the source of the image
+            img.src = `${picture}`;
+            //add the image to a specific element
+            document.getElementById(targetId).appendChild(img);
+        }
+        create_img_element('user_img');
+
+        })
+    </script>
+</body>
+</html>
