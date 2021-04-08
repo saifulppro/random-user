@@ -73,19 +73,19 @@
             document.getElementById('user_age').innerText = age;
             document.getElementById('user_username').innerText = userName;
             // document.getElementById('user_img').src = picture;
-
-            const create_img_element = function(targetId){
+           
+        }
+        randomUser();
+             const create_img_element = function(targetId){
             //create the img element
             const img = document.createElement('img');
             //set the source of the image
             img.src = `${picture}`;
             //add the image to a specific element
             document.getElementById(targetId).appendChild(img);
-        }
-        create_img_element('user_img');
-        })
-        }
-        randomUser();
+            }
+            create_img_element('user_img');
+            })
          setInterval(() => {
            randomUser();
        }, 10000);
