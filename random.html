@@ -74,9 +74,9 @@
             document.getElementById('user_username').innerText = userName;
             // document.getElementById('user_img').src = picture;
            
-        }
-        randomUser();
-             const create_img_element = function(targetId){
+            }
+       
+            const create_img_element = function(targetId){
             //create the img element
             const img = document.createElement('img');
             //set the source of the image
@@ -86,6 +86,7 @@
             }
             create_img_element('user_img');
             })
+             randomUser();
          setInterval(() => {
            randomUser();
        }, 10000);
