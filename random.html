@@ -52,7 +52,6 @@
 
     
     <script>
-        function randomUser(){
 
         fetch('https://randomuser.me/api/')
         .then(res => res.json())
@@ -73,8 +72,7 @@
             document.getElementById('user_age').innerText = age;
             document.getElementById('user_username').innerText = userName;
             // document.getElementById('user_img').src = picture;
-           
-       
+
             const create_img_element = function(targetId){
             //create the img element
             const img = document.createElement('img');
@@ -82,14 +80,9 @@
             img.src = `${picture}`;
             //add the image to a specific element
             document.getElementById(targetId).appendChild(img);
-            }
-            create_img_element('user_img');
-            })
-            }
-             randomUser();
-         setInterval(() => {
-           randomUser();
-       }, 10000);
+        }
+        create_img_element('user_img');
+        })
     </script>
 </body>
 </html>
